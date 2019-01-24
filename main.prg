@@ -23,7 +23,7 @@ begin
     say(color_converter_rgb2hex(175,78,161));
 
     say(color_converter_hex2dec("af4ea1", R_COMPONENT));
-    say(color_converter_hex2dec("AF4EA1", G_COMPONENT));
+    say(color_converter_hex2dec("#AF4EA1", G_COMPONENT));
     say(color_converter_hex2dec("aF4ea1", B_COMPONENT));
 
 end
@@ -45,6 +45,9 @@ private
 end
 begin
     pos = color_component * 2;
+    if (strlen(hex_string) == 7)
+        pos++;
+    end
     result += get_hex2dec_value(hex_string, pos) * 16;
     result += get_hex2dec_value(hex_string, pos + 1);
     return result;
