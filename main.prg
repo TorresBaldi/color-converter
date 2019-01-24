@@ -10,7 +10,9 @@ const
 end
 
 declare function string color_converter_rgb2hex(byte r, byte g, byte b); end
-declare function int color_converter_hex2dec(string hex_string, byte color_component); end
+declare function byte color_converter_hex2dec(string hex_string, byte color_component); end
+
+// internal functions
 declare function string dec2hex_component(byte decnum); end
 declare function string zero_pad(string str, int len); end
 declare function int hex2dec_single_digit(string hex_digit); end
@@ -37,8 +39,8 @@ begin
     return "#" + zero_pad(dec2hex_component(r), 2) + zero_pad(dec2hex_component(g), 2) + zero_pad(dec2hex_component(b), 2);
 end
 
-// get decimal representation of a color
-function int color_converter_hex2dec(string hex_string, byte color_component)
+// get decimal representation of the selected color component
+function byte color_converter_hex2dec(string hex_string, byte color_component)
 private
     byte result = 0;
     byte pos = 0;
